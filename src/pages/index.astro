@@ -31,24 +31,21 @@ const fetchDataGuide = await getEntry("guides", "guide-fetch-data");
     supabase ? (
       frameworks ? (
         <>
-			<article class="border-b pb-14 border-neutral-600">
+          <article class="border-b pb-14 border-neutral-600">
 			
 			<header class="flex flex-wrap items-center justify-between pb-2 mb-8 border-b">
 				<h1 class="mb-8 text-4xl font-bold">Please enter your mobile number</h1>
 			</header>
 
-		  <form action="/api/frameworks/query" method="post">
-			<label for="mobile">Mobile</label>
-			<input type="text" name="mobile" id="mobile" />
-			<button type="submit">Enter</button>
-		  </form>
-		  
-		  </article>
-		  
-          
+			<form action="/api/frameworks/query" method="post">
+				<label for="mobile">Mobile</label>
+				<input type="text" name="mobile" id="mobile" />
+				<button type="submit">Enter</button>
+			</form>
+				  
+		 </article>
         </>
-
-    ) : (
+      ) : (
         <>
           {frameworksError && (
             <Alert
@@ -59,8 +56,11 @@ const fetchDataGuide = await getEntry("guides", "guide-fetch-data");
           )}
           {fetchDataGuide && <Guide guide={fetchDataGuide} />}
         </>
-		)
-		)
-	)
+      )
+    ) : (
+      <>
+        {connectGuide && <Guide guide={connectGuide} />}
+      </>
+    )
   }
 </Layout>
