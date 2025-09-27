@@ -37,7 +37,7 @@ const fetchDataGuide = await getEntry("guides", "guide-fetch-data");
 				<h1 class="mb-8 text-4xl font-bold">Please enter your mobile number</h1>
 			</header>
 
-		  <form action="/api/auth/register" method="post">
+		  <form action="/api/frameworks/${mobile}/like" method="post">
 			<label for="mobile">Mobile</label>
 			<input type="text" name="mobile" id="mobile" />
 			<button type="submit">Enter</button>
