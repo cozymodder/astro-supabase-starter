@@ -48,6 +48,17 @@ const fetchDataGuide = await getEntry("guides", "guide-fetch-data");
           
         </>
 
-    )
-  };
+    ) : (
+        <>
+          {frameworksError && (
+            <Alert
+              title={frameworksError.code}
+              text={frameworksError.message}
+              variant="error"
+            />
+          )}
+          {fetchDataGuide && <Guide guide={fetchDataGuide} />}
+        </>
+      )
+  }
 </Layout>
