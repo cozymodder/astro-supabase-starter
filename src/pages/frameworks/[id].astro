@@ -24,6 +24,10 @@ if (supabase) {
     throw new Error("No framework found");
   }
 }
+
+const formattedDate = framework?.created_at
+  ? new Date(framework.created_at).toISOString().split('T')[0]
+  : 'N/A';
 ---
 
 <Layout title={`${framework?.name} | Frameworks`}>
@@ -44,7 +48,7 @@ if (supabase) {
       <figcaption class="font-mono text-xs">{framework?.name} logo</figcaption>
     </figure>
 
-    <p class="py-6 text-xl">You have {framework?.likes} reward points as of {framework?.created_at.format("YYYY-MM-DD UTC")}</p>
+    <p class="py-6 text-xl">You have {framework?.likes} reward points as of {formattedDate}</p>
 
     <form action={`/api/frameworks/${framework?.id}/like`} method="post">
       <h2 class="mb-2 text-2xl">Like {framework?.name}!</h2>
