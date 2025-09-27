@@ -8,18 +8,29 @@ import { supabase } from "../utils/database";
 
 export const prerender = false;
 
-let frameworks;
-let frameworksError;
+let name = '';
+let email = '';
+let submissionStatus = '';
 
-// Fetch frameworks data from Supabase if connection is set up
-if (supabase) {
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  submissionStatus = ''; // Reset status
+
   const { data, error } = await supabase
-    .from("frameworks")
-    .select("*")
-    .order("likes", { ascending: false });
-  frameworks = data;
-  frameworksError = error;
-}
+    .from('your_table_name') // Replace with your table name
+    .select('email') // Fetch the email based on the name
+    .eq('name', name) // Match the name entered
+    .single(); // Get a single record
+
+  if (error) {
+    submissionStatus = 'Error fetching data: ' + error.message;
+  } else if (data) {
+    email = data.email; // Set the fetched email
+    submissionStatus = 'Email fetched successfully!';
+  } else {
+    submissionStatus = 'No email found for the provided name.';
+  }
+};
 
 // Get guides
 const connectGuide = await getEntry("guides", "guide-connect-supabase");
@@ -42,24 +53,6 @@ const fetchDataGuide = await getEntry("guides", "guide-fetch-data");
 
 		  {email && <p>Email: {email}</p>}
 		  {submissionStatus && <p>{submissionStatus}</p>}
-
-          <h1 class="mb-8 text-4xl font-bold">
-            Vote for Your Favorite Web Framework
-          </h1>
-          <table class="w-full text-left">
-            <thead>
-              <tr class="font-mono text-base border-t border-b">
-                <th>Name</th>
-                <th>Logo</th>
-                <th>Likes</th>
-              </tr>
-            </thead>
-            <tbody>
-              {frameworks?.map((framework) => (
-                <TableRow framework={framework} />
-              ))}
-            </tbody>
-          </table>
         </>
       ) : (
         <>
