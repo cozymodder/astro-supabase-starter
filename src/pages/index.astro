@@ -34,6 +34,11 @@ const fetchDataGuide = await getEntry("guides", "guide-fetch-data");
           <h1 class="mb-8 text-4xl font-bold">
             Vote for Your Favorite Web Framework
           </h1>
+		    <form action="/api/auth/register" method="post">
+				<label for="mobile">Mobile</label>
+				<input type="text" name="mobile" id="mobile" />
+				<button type="submit">Enter</button>
+			  </form>
           <table class="w-full text-left">
             <thead>
               <tr class="font-mono text-base border-t border-b">
