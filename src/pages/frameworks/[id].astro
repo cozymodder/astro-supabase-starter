@@ -44,7 +44,7 @@ if (supabase) {
       <figcaption class="font-mono text-xs">{framework?.name} logo</figcaption>
     </figure>
 
-    <p class="py-6 text-xl">You have {framework?.likes} reward points as of {framework?.created_at}</p>
+    <p class="py-6 text-xl">You have {framework?.likes} reward points as of {framework?.created_at.format("YYYY-MM-DD UTC")}</p>
 
     <form action={`/api/frameworks/${framework?.id}/like`} method="post">
       <h2 class="mb-2 text-2xl">Like {framework?.name}!</h2>
