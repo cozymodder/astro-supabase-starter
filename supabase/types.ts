@@ -16,8 +16,8 @@ export type Database = {
           url: string;
           id: string;
           logo: string;
-          name: string;
-          likes: number;
+          mobile: string;
+          points: number;
         };
         Insert: {
           description: string;
@@ -25,8 +25,8 @@ export type Database = {
           url: string;
           id?: string;
           logo: string;
-          name: string;
-          likes?: number;
+          mobile: string;
+          points?: number;
         };
         Update: {
           description?: string;
@@ -34,8 +34,8 @@ export type Database = {
           url?: string;
           id?: string;
           logo?: string;
-          name?: string;
-          likes?: number;
+          mobile?: string;
+          points?: number;
         };
         Relationships: [];
       };
