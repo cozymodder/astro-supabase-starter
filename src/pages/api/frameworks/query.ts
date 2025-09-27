@@ -7,7 +7,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   const formData = await request.formData();
   const mobile = formData.get("mobile")?.toString();
   if (!mobile) {
-    return new Response("Mobile number is required", { status: 400 });
+    return new Response("Mobile number is required.", { status: 400 });
   }
 
   if (supabase) {
@@ -18,7 +18,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
       .single();
 
     if (!framework) {
-      return new Response(`Where'd that pet go?`, { status: 404 });
+      return new Response("Mobile number not found.", { status: 404 });
     }
     return redirect(`/frameworks/${framework.id}`, 303);
   }
