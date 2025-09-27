@@ -31,6 +31,18 @@ const fetchDataGuide = await getEntry("guides", "guide-fetch-data");
     supabase ? (
       frameworks ? (
         <>
+		  <h1>Get Email by Name</h1>
+		  <form on:submit={handleSubmit}>
+			<label>
+			  Name:
+			  <input type="text" bind:value={name} required />
+			</label>
+			<button type="submit">Fetch Email</button>
+		  </form>
+
+		  {email && <p>Email: {email}</p>}
+		  {submissionStatus && <p>{submissionStatus}</p>}
+
           <h1 class="mb-8 text-4xl font-bold">
             Vote for Your Favorite Web Framework
           </h1>
