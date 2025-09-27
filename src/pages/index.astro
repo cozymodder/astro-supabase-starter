@@ -16,7 +16,7 @@ if (supabase) {
   const { data, error } = await supabase
     .from("frameworks")
     .select("*")
-    .order("points", { ascending: false });
+    .order("pointws", { ascending: false });
   frameworks = data;
   frameworksError = error;
 }
