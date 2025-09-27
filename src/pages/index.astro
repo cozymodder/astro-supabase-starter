@@ -8,29 +8,22 @@ import { supabase } from "../utils/database";
 
 export const prerender = false;
 
-let name = '';
-let email = '';
-let submissionStatus = '';
+let frameworks;
+let frameworksError;
 
-const handleSubmit = async (event) => {
-  event.preventDefault();
-  submissionStatus = ''; // Reset status
-
+// Fetch frameworks data from Supabase if connection is set up
+if (supabase) {
   const { data, error } = await supabase
-    .from('contacts') // Replace with your table name
-    .select('email') // Fetch the email based on the name
-    .eq('name', name) // Match the name entered
-    .single(); // Get a single record
+    .from("frameworks")
+    .select("*")
+    .order("likes", { ascending: false });
+  frameworks = data;
+  frameworksError = error;
+}
 
-  if (error) {
-    submissionStatus = 'Error fetching data: ' + error.message;
-  } else if (data) {
-    email = data.email; // Set the fetched email
-    submissionStatus = 'Email fetched successfully!';
-  } else {
-    submissionStatus = 'No email found for the provided name.';
-  }
-};
+// Get guides
+const connectGuide = await getEntry("guides", "guide-connect-supabase");
+const fetchDataGuide = await getEntry("guides", "guide-fetch-data");
 ---
 
 <Layout title="Web Frameworks">
@@ -38,18 +31,41 @@ const handleSubmit = async (event) => {
     supabase ? (
       frameworks ? (
         <>
-          <h1>Get Email by Name</h1>
-		  <form on:submit={handleSubmit}>
-			<label>
-			  Name:
-			  <input type="text" bind:value={name} required />
-			</label>
-			<button type="submit">Fetch Email</button>
-		  </form>
-
-		  {email && <p>Email: {email}</p>}
-		  {submissionStatus && <p>{submissionStatus}</p>}
-		  </>
-		)
+          <h1 class="mb-8 text-4xl font-bold">
+            Vote for Your Favorite Web Framework
+          </h1>
+          <table class="w-full text-left">
+            <thead>
+              <tr class="font-mono text-base border-t border-b">
+                <th>Name</th>
+                <th>Logo</th>
+                <th>Likes</th>
+              </tr>
+            </thead>
+            <tbody>
+              {frameworks?.map((framework) => (
+                <TableRow framework={framework} />
+              ))}
+            </tbody>
+          </table>
+        </>
+      ) : (
+        <>
+          {frameworksError && (
+            <Alert
+              title={frameworksError.code}
+              text={frameworksError.message}
+              variant="error"
+            />
+          )}
+          {fetchDataGuide && <Guide guide={fetchDataGuide} />}
+        </>
+      )
+    ) : (
+      <>
+        <Alert title="Finish setting up your new site" text="Before your website is ready, you must complete the steps from the guide below to create, populate, and connect your Supabase database."/>
+        {connectGuide && <Guide guide={connectGuide} />}
+      </>
+    )
   }
 </Layout>
