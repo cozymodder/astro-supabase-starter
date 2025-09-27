@@ -23,7 +23,7 @@ export const POST: APIRoute = async ({ params, redirect }) => {
     const { error: updateError } = await supabase
       .from("frameworks")
       .update({
-        likes: framework.likes + 1,
+        points: framework.points + 1,
       })
       .eq("id", framework.id);
 

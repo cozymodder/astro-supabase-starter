@@ -30,7 +30,7 @@ const formattedDate = framework?.created_at
   : 'N/A';
 ---
 
-<Layout title={`${framework?.name} | Frameworks`}>
+<Layout title={`${framework?.mobile} | Frameworks`}>
   <article class="border-b pb-14 border-neutral-600">
     <header
       class="flex flex-wrap items-center justify-between pb-2 mb-8 border-b"
@@ -38,7 +38,7 @@ const formattedDate = framework?.created_at
       <h1 class="mb-8 text-4xl font-bold">Privileges and Rewards</h1>
     </header>
 
-    <p class="py-6 text-xl">You have {framework?.likes} reward points as of {formattedDate}.</p>
+    <p class="py-6 text-xl">You have {framework?.points} reward points as of {formattedDate}.</p>
 
   </article>
 </Layout>
