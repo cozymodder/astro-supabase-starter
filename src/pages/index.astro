@@ -31,14 +31,19 @@ const fetchDataGuide = await getEntry("guides", "guide-fetch-data");
     supabase ? (
       frameworks ? (
         <>
-          <h1 class="mb-8 text-4xl font-bold">
-            Vote for Your Favorite Web Framework
-          </h1>
+			<article class="border-b pb-14 border-neutral-600">
+			
+			<header class="flex flex-wrap items-center justify-between pb-2 mb-8 border-b">
+				<h1 class="mb-8 text-4xl font-bold">Please enter your mobile number</h1>
+			</header>
+
 		  <form action="/api/auth/register" method="post">
 			<label for="mobile">Mobile</label>
 			<input type="text" name="mobile" id="mobile" />
 			<button type="submit">Enter</button>
 		  </form>
+		  
+		  </article>
 		  
           <table class="w-full text-left">
             <thead>
