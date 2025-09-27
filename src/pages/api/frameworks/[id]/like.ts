@@ -11,7 +11,7 @@ export const POST: APIRoute = async ({ params, redirect }) => {
 
   if (supabase) {
     const { data: framework } = await supabase
-      .from("frameworks")
+      .from("contacts")
       .select("*")
       .eq("id", id)
       .single();
