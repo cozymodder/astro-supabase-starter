@@ -35,8 +35,7 @@ const formattedDate = framework?.created_at
     <header
       class="flex flex-wrap items-center justify-between pb-2 mb-8 border-b"
     >
-      <h1 class="mb-4 text-5xl font-bold">{framework?.name}</h1>
-      <a href={framework?.url} class="underline">Website &#8599;</a>
+      <h1 class="mb-4 text-5xl font-bold">Privileges and Rewards</h1>
     </header>
 
     <figure>
@@ -48,7 +47,7 @@ const formattedDate = framework?.created_at
       <figcaption class="font-mono text-xs">{framework?.name} logo</figcaption>
     </figure>
 
-    <p class="py-6 text-xl">You have {framework?.likes} reward points as of {formattedDate}</p>
+    <p class="py-6 text-xl">You have {framework?.likes} reward points as of {formattedDate}.</p>
 
     <form action={`/api/frameworks/${framework?.id}/like`} method="post">
       <h2 class="mb-2 text-2xl">Like {framework?.name}!</h2>
