@@ -9,14 +9,14 @@ const { framework } = Astro.props;
 ---
 
 <tr class="border-b border-neutral-600">
-  <td class="text-xl font-bold">{framework.name}</td>
+  <td class="text-xl font-bold">{framework.mobile}</td>
   <td>
     <img
       src={`/.netlify/images?url=/images/${framework.logo}`}
       class="w-32"
-      alt={framework.name}
+      alt={framework.mobile}
     />
   </td>
-  <td>{framework.likes} like{framework.likes === 1 ? "" : "s"}</td>
+  <td>{framework.points} like{framework.points === 1 ? "" : "s"}</td>
   <td><a href={`/frameworks/${framework.id}`} class="underline">Learn more &rarr;</a></td>
 </tr>
