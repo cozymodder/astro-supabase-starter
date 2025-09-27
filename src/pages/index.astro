@@ -17,7 +17,7 @@ const handleSubmit = async (event) => {
   submissionStatus = ''; // Reset status
 
   const { data, error } = await supabase
-    .from('your_table_name') // Replace with your table name
+    .from('contacts') // Replace with your table name
     .select('email') // Fetch the email based on the name
     .eq('name', name) // Match the name entered
     .single(); // Get a single record
