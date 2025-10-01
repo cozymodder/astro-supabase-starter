@@ -5,7 +5,7 @@ export const prerender = false;
 
 export const POST: APIRoute = async ({ request, redirect }) => {
   const formData = await request.formData();
-  const name = formData.get("name")?.toString();
+  const name = formData.get("name")?.toString().toLowerCase();
   const mobile = formData.get("mobile")?.toString();
   if (!name) {
     return new Response("請輸入於facebook社團所登記的身份證英文全名及電話號碼。", { status: 400 });
