@@ -13,7 +13,7 @@ export type Database = {
         Row: {
           description: string;
           created_at: string;
-          url: string;
+          name: string;
           id: string;
           logo: string;
           mobile: string;
@@ -22,7 +22,7 @@ export type Database = {
         Insert: {
           description: string;
           created_at?: string;
-          url: string;
+          name: string;
           id?: string;
           logo: string;
           mobile: string;
@@ -31,7 +31,7 @@ export type Database = {
         Update: {
           description?: string;
           created_at?: string;
-          url?: string;
+          name?: string;
           id?: string;
           logo?: string;
           mobile?: string;

@@ -26,7 +26,7 @@ const connectGuide = await getEntry("guides", "guide-connect-supabase");
 const fetchDataGuide = await getEntry("guides", "guide-fetch-data");
 ---
 
-<Layout title="Web Frameworks">
+<Layout title="累積積分親身見證樂壇盛事">
   {
     supabase ? (
       frameworks ? (
@@ -34,13 +34,15 @@ const fetchDataGuide = await getEntry("guides", "guide-fetch-data");
           <article class="border-b pb-14 border-neutral-600">
 			
 			<header class="flex flex-wrap items-center justify-between pb-2 mb-8 border-b">
-				<h1 class="mb-8 text-4xl font-bold">Please enter your mobile number</h1>
+				<h1 class="mb-8 text-4xl font-bold">請輸入於facebook社團所登記的電話號碼及身份證英文全名來查核最新積分</h1>
 			</header>
 
 			<form action="/api/frameworks/query" method="post">
-				<label for="mobile">Mobile</label>
+				<label for="name">身份證英文全名</label>
+				<input type="text" name="name" id="name" />
+				<label for="mobile">電話號碼</label>
 				<input type="text" name="mobile" id="mobile" />
-				<button type="submit">Enter</button>
+				<button type="submit">輸入</button>
 			</form>
 				  
 		 </article>

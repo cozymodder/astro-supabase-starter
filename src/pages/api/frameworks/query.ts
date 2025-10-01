@@ -7,7 +7,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   const formData = await request.formData();
   const mobile = formData.get("mobile")?.toString();
   if (!mobile) {
-    return new Response("Mobile number is required.", { status: 400 });
+    return new Response("請輸入於facebook社團所登記的身份證英文全名及電話號碼。", { status: 400 });
   }
 
   if (supabase) {
@@ -18,7 +18,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
       .single();
 
     if (!framework) {
-      return new Response("Mobile number not found.", { status: 404 });
+      return new Response("身份證英文全名/電話號碼未有登記紀錄。", { status: 404 });
     }
     return redirect(`/frameworks/${framework.id}`, 303);
   }

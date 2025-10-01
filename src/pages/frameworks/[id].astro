@@ -28,6 +28,11 @@ if (supabase) {
 const formattedDate = framework?.created_at
   ? new Date(framework.created_at).toISOString().split('T')[0]
   : 'N/A';
+const formattedTime = framework?.created_at
+  ? new Date(framework.created_at).toISOString().split('T')[1]
+  : 'N/A';
+const hour = formattedTime.split(':')[0];
+const minute = formattedTime.split(':')[1];
 const modifiedDate = formattedDate.replace('-', '年').replace('-', '月');
 ---
 
@@ -39,7 +44,7 @@ const modifiedDate = formattedDate.replace('-', '年').replace('-', '月');
       <h1 class="mb-8 text-4xl font-bold">積分紀錄</h1>
     </header>
 
-    <p class="py-6 text-xl">You have {framework?.points} reward points as of {formattedDate}.直至{modifiedDate}號XX時XX分，你擁有{framework?.points}積分。</p>
+    <p class="py-6 text-xl">直至{modifiedDate}號{hour}時{minute}分，你擁有{framework?.points}積分。</p>
 
   </article>
 </Layout>
