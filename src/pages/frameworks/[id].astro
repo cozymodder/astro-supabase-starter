@@ -28,17 +28,18 @@ if (supabase) {
 const formattedDate = framework?.created_at
   ? new Date(framework.created_at).toISOString().split('T')[0]
   : 'N/A';
+const modifiedDate = formattedDate.replace('-', '年').replace('-', '月');
 ---
 
-<Layout title={`${framework?.mobile} | Frameworks`}>
+<Layout title={累積積分親身見證樂壇盛事 }>
   <article class="border-b pb-14 border-neutral-600">
     <header
       class="flex flex-wrap items-center justify-between pb-2 mb-8 border-b"
     >
-      <h1 class="mb-8 text-4xl font-bold">Privileges and Rewards</h1>
+      <h1 class="mb-8 text-4xl font-bold">積分紀錄</h1>
     </header>
 
-    <p class="py-6 text-xl">You have {framework?.points} reward points as of {formattedDate}.</p>
+    <p class="py-6 text-xl">You have {framework?.points} reward points as of {formattedDate}.直至{formattedDate}號XX時XX分，你擁有{framework?.points}積分。</p>
 
   </article>
 </Layout>
