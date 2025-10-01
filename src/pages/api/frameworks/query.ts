@@ -5,8 +5,9 @@ export const prerender = false;
 
 export const POST: APIRoute = async ({ request, redirect }) => {
   const formData = await request.formData();
+  const name = formData.get("name")?.toString();
   const mobile = formData.get("mobile")?.toString();
-  if (!mobile) {
+  if (!name) || (!mobile) {
     return new Response("請輸入於facebook社團所登記的身份證英文全名及電話號碼。", { status: 400 });
   }
 
@@ -14,6 +15,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     const { data: framework } = await supabase
       .from("frameworks")
       .select("*")
+	  .eq("name", name)
       .eq("mobile", mobile)
       .single();
 
