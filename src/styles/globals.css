@@ -11,9 +11,6 @@
   th {
     @apply py-4;
   }
-  img {
-    @apply border rounded-sm border-neutral-500;
-  }
   form {
     @apply space-y-4;
   }
