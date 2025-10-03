@@ -23,7 +23,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
       .single();
 
     if (!framework) {
-      return redirect(`/unreg`, 404);
+      return redirect(`/unreg`, 303);
     }
     return redirect(`/frameworks/${framework.id}`, 303);
   }
