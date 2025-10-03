@@ -3,6 +3,7 @@ import "../../src/styles/globals.css";
 import Footer from "./Footer.astro";
 import Header from "./Header.astro";
 import bgImage from '../../images/bg.png';
+import logoImage from '../../images/logo.png';
 
 interface Props {
   title: string;
@@ -20,6 +21,7 @@ const { title } = Astro.props;
   </head>
   <body class="px-4 antialiased bg-cover sm:px-8 text-white" style="background-image: url('/images/bg.png');">
     <Header />
+	<div class="absolute top-0 right-0 sm:inset-x-1/2 sm:inset-y-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2"><img src="/images/logo.png"></div>
     <main class="w-full max-w-4xl mx-auto grow">
       <slot />
     </main>

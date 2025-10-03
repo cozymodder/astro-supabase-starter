@@ -36,7 +36,7 @@ const minute = formattedTime.split(':')[1];
 const modifiedDate = formattedDate.replace('-', '年').replace('-', '月');
 ---
 
-<Layout title="累積積分親身見證樂壇盛事">
+<Layout title="加入FRC社團並累積積分，親身見證樂壇盛事">
   <article class="border-b pb-14 border-neutral-600">
     <header
       class="flex flex-wrap items-center justify-between pb-2 mb-8 border-b"
@@ -44,7 +44,7 @@ const modifiedDate = formattedDate.replace('-', '年').replace('-', '月');
       <h1 class="mb-8 text-4xl font-bold">積分紀錄</h1>
     </header>
 
-    <p class="py-6 text-xl">直至{modifiedDate}號{hour}時{minute}分，你擁有{framework?.points}積分。</p>
+    <p class="py-6 text-xl">直至{modifiedDate}日{hour}時{minute}分，你擁有{framework?.points}積分。</p>
 
   </article>
 </Layout>
