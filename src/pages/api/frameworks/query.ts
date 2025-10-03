@@ -23,7 +23,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
       .single();
 
     if (!framework) {
-      return new Response("身份證英文全名/電話號碼未有登記紀錄。", { status: 404 });
+      return redirect(`/unreg`, 404);
     }
     return redirect(`/frameworks/${framework.id}`, 303);
   }
