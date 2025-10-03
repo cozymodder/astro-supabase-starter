@@ -1,0 +1,60 @@
+---
+import { getEntry } from "astro:content";
+import Alert from "../components/Alert.astro";
+import Guide from "../components/Guide.astro";
+import Layout from "../components/Layout.astro";
+import TableRow from "../components/TableRow.astro";
+import { supabase } from "../utils/database";
+
+export const prerender = false;
+
+let frameworks;
+let frameworksError;
+
+// Fetch frameworks data from Supabase if connection is set up
+if (supabase) {
+  const { data, error } = await supabase
+    .from("frameworks")
+    .select("*")
+    .order("points", { ascending: false });
+  frameworks = data;
+  frameworksError = error;
+}
+
+// Get guides
+const connectGuide = await getEntry("guides", "guide-connect-supabase");
+const fetchDataGuide = await getEntry("guides", "guide-fetch-data");
+---
+
+<Layout title="">
+  {
+    supabase ? (
+      frameworks ? (
+        <>
+          <article class="border-b pb-14 border-neutral-600">
+			
+			<header class="flex flex-wrap items-center justify-between pb-2 mb-8 border-b">
+				<h1 class="mb-8 font-bold">請輸入於facebook社團所登記的身份證英文全名及電話號碼。</h1>
+			</header>
+				  
+		 </article>
+        </>
+      ) : (
+        <>
+          {frameworksError && (
+            <Alert
+              title={frameworksError.code}
+              text={frameworksError.message}
+              variant="error"
+            />
+          )}
+          {fetchDataGuide && <Guide guide={fetchDataGuide} />}
+        </>
+      )
+    ) : (
+      <>
+        {connectGuide && <Guide guide={connectGuide} />}
+      </>
+    )
+  }
+</Layout>

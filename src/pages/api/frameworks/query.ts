@@ -8,10 +8,10 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   const name = formData.get("name")?.toString().toLowerCase();
   const mobile = formData.get("mobile")?.toString();
   if (!name) {
-    return new Response("請輸入於facebook社團所登記的身份證英文全名及電話號碼。", { status: 400 });
+    return redirect(`/missing`, 303);
   }
     if (!mobile) {
-    return new Response("請輸入於facebook社團所登記的身份證英文全名及電話號碼。", { status: 400 });
+    return redirect(`/missing`, 303);
   }
 
   if (supabase) {
