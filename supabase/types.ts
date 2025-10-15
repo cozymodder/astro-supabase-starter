@@ -11,29 +11,26 @@ export type Database = {
     Tables: {
       frameworks: {
         Row: {
-          description: string;
+          record: string;
           created_at: string;
           name: string;
           id: string;
-          logo: string;
           mobile: string;
           points: number;
         };
         Insert: {
-          description: string;
+          record: string;
           created_at?: string;
           name: string;
           id?: string;
-          logo: string;
           mobile: string;
           points?: number;
         };
         Update: {
-          description?: string;
+          record?: string;
           created_at?: string;
           name?: string;
           id?: string;
-          logo?: string;
           mobile?: string;
           points?: number;
         };
